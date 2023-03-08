@@ -1,0 +1,25 @@
+services:
+  dev-java:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        VARIANT: bullseye
+        USERNAME: vscode
+    command: sleep infinity
+    volumes:
+      - ../:/workspace:cached
+      - vscode-extensions:/home/vscode/.vscode-server/extensions
+      - ~/.m2:/home/vscode/.m2
+    labels:
+      - networks=bridge
+  connect-bridge:
+    image: docker:stable
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: >
+      /bin/sh -c "docker inspect -f '{{index .Config.Labels \"com.docker.compose.project\"}}' $${HOSTNAME}| xargs -i docker ps -f label=networks=bridge -f label=com.docker.compose.project={} -q | xargs -i docker network connect bridge {} && sleep infinity"
+    depends_on:
+      - dev-java
+volumes:
+  vscode-extensions: null

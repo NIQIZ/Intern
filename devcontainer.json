@@ -1,0 +1,66 @@
+{
+    "name": "dev-java",
+    "dockerComposeFile": [
+        "docker-compose.yaml",
+    ],
+    "service": "dev-java",
+    "workspaceFolder": "/workspace",
+    "settings": {
+        "editor.detectIndentation": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true
+        },
+        "java.jdt.ls.java.home": "${containerEnv:JAVA_HOME}",
+        "java.jdt.ls.lombokSupport.enabled": false,
+        "java.configuration.runtimes": [
+            {
+                "name": "JavaSE-17",
+                "path": "${containerEnv:JAVA_HOME}",
+                "default": true
+            }
+        ],
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.format.settings.url": "https://bitbucket.org/!api/2.0/snippets/shaw-devops/9Xb7Bz/9e786a45111aec86e357e23abf8512a276ddc9ee/files/eclipse-java-style.xml",
+        "java.completion.favoriteStaticMembers": [
+            "com.shaw.business360.core.common.util.ResultConverters.*",
+            "com.shaw.business360.core.common.validation.Validations.*",
+            "co.unruly.control.matchers.ResultMatchers.*",
+            "co.unruly.control.result.Resolvers.*",
+            "co.unruly.control.result.Transformers.*",
+            "co.unruly.control.validation.Validators.*",
+            "org.junit.jupiter.api.Assertions.*",
+            "org.assertj.core.api.Assertions.*",
+            "org.assertj.core.api.HamcrestCondition.*",
+            "org.mockito.ArgumentMatchers.*",
+            "org.mockito.Mockito.*",
+            "org.hamcrest.core.Is.*",
+            "org.hamcrest.core.IsInstanceOf.*",
+        ],
+        "maven.pomfile.autoUpdateEffectivePOM": true,
+        "[json]": {
+            "editor.defaultFormatter": "vscode.json-language-features"
+        },
+        "[yaml]": {
+            "editor.defaultFormatter": "redhat.vscode-yaml"
+        }
+    },
+    "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-boot-dev-pack",
+    ],
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-from-docker:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "17",
+            "installMaven": true
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
+    }
+}

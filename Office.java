@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class Office {
     String name;
     String address;
     // Map<Integer, Employee> employees;
-    // Map<String, Facility> facilities;
+    Map<String, Facility> facilities;
 
     public Office(String name, String address) {
         System.out.println("--Information--");
@@ -36,13 +40,15 @@ public class Office {
     // // MeetingRoom
     // }
 
-    // public String getFacility(String code){
-    // // Facility
-    // }
+    public String getFacility(String code) {
 
-    // public String getFacilities(){
-    // // List<Facility>
-    // }
+    }
+
+    public String getFacilities() {
+        List<Facility> fList = new ArrayList<Facility>();
+        fList.add();
+        fList.add("F02");
+    }
 
     // public void doBooking(){
 
