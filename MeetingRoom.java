@@ -2,13 +2,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MeetingRoom implements Facility {
-    public void getCode() {
-        List<Facility> fList = new ArrayList<Facility>();
-        MeetingRoom myRoom = new MeetingRoom();
-        fList.add(myRoom);
+    String code;
+    String name;
+
+    public MeetingRoom(String code, String name){
+        this.code = code;
+        this.name = name;
+    }
+
+    public List getCode() {
+        return code;
     }
 
     public void getName() {
-
+        return name;
     }
 }
