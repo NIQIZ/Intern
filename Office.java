@@ -1,11 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Office {
     String name;
     String address;
-    // Map<Integer, Employee> employees;
+    Map<Integer, Employee> employees = new HashMap<>();
+
     Map<String, Facility> facilities;
 
     public Office(String name, String address) {
@@ -23,12 +22,12 @@ public class Office {
         return address;
     }
 
-    // public void getEmployee(int employeeNumber) {
-
-    // }
+    public void getEmployee(int employeeNumber) {
+        employees.put
+    }
 
     // public String getEmployees(){
-    // // List
+        
     // }
 
     // public void addEmployee(String fullName, Enum EmploymentType){
@@ -45,9 +44,9 @@ public class Office {
     }
 
     public String getFacilities() {
-        List<Facility> fList = new ArrayList<Facility>();
-        fList.add();
-        fList.add("F02");
+        // List<Facility> fList = new ArrayList<Facility>();
+        // fList.add();
+        // fList.add();
     }
 
     // public void doBooking(){
