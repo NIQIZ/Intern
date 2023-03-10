@@ -1,6 +1,8 @@
 // Interface
 interface Facility {
-    public void getCode();
+    public String getCode();
 
-    public void getName();
+    public String getName();
+
+    public void print();
 }

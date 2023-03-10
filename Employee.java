@@ -1,25 +1,23 @@
 public class Employee extends Person {
     int employeeNumber;
-    EmploymentType employmentType;
+    EmploymentType type;
 
     enum EmploymentType {
         PERMANENT, INTERN
     }
 
-    public Employee(int employeeNumber, EmploymentType employmentType, String fullName) {
+    public Employee(int employeeNumber, EmploymentType type, String fullName) {
         super(fullName);
         this.employeeNumber = employeeNumber;
-        this.employmentType = employmentType;
+        this.type = type;
     }
 
     public int getEmployeeNumber() {
         return employeeNumber;
     }
 
-    public void getStatus(EmploymentType employmentType) {
-        // Employee.EmploymentType intern = Employee.EmploymentType.INTERN;
-        // Employee.EmploymentType permanent = Employee.EmploymentType.PERMANENT;
-        switch (employmentType) {
+    public EmploymentType getStatus() {
+        switch (type) {
         case INTERN:
             System.out.println("Intern");
             break;
@@ -27,10 +25,11 @@ public class Employee extends Person {
             System.out.println("Permanent");;
             break;
         }
+        return type;
     }
 
     @Override
     public String toString() {
-        return employeeNumber + ": " + "   Employee Type: " + employmentType + "    Name: " + getFullName();
+        return getEmployeeNumber() + ": " + " " + getFullName() + " " + type;
     }
 }

@@ -1,20 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class MeetingRoom implements Facility {
     String code;
     String name;
 
-    public MeetingRoom(String code, String name){
+    public MeetingRoom(String code, String name) {
         this.code = code;
         this.name = name;
     }
 
-    public List getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void getName() {
+    public String getName() {
         return name;
+    }
+
+    public void print() {
+        System.out.println(getCode() + ": " + getName());
     }
 }

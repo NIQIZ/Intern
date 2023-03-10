@@ -9,16 +9,27 @@ public class Office {
     String name;
     String address;
 
-    Map<Integer, Employee> employees = new HashMap<>();
+    int nextEmpNumber = 1; // for incrementing purpose
+    public static Map<Integer, Employee> employees;
+    public static List<Employee> employeeList; // Without static --> Cannot make a static reference to the non-static
+                                               // field employeeList
 
-    Map<String, Facility> facilities = new HashMap<>();
+    Map<String, Facility> facilities;
+    public static List<Facility> facilityList;
 
     public Office(String name, String address) {
         System.out.println("--Information--");
         this.name = name;
         this.address = address;
+
+        employees = new HashMap<>();
+        employeeList = new ArrayList<>();
+
+        facilities = new HashMap<>();
+        facilityList = new ArrayList<>();
     }
 
+    /* */
     // GET Properties
     public String getName() {
         return name;
@@ -28,48 +39,55 @@ public class Office {
         return address;
     }
 
-    // GET Employee
-    public static Employee getEmployee(int employeeNumber, Map<Integer, Employee> employees) {
-
-        if (employees.containsKey(employeeNumber)) {
-            return employees.get(employeeNumber);
-        } else {
-            return null;
-        }
-    }
-
-    // GET Employeessssss
-    public static List<Employee> getEmployees(Map<Integer, Employee> employees) {
-        List<Employee> employeeList = new ArrayList<>(employees.values());
-        return employeeList;
-    }
-
+    /* */
     // ADD Employee
-    public Employee addEmployee(String fullName, Employee.EmploymentType employmentType) {
-        int nextEmpNumber = employees.size() + 1;
-        // Employee newEmployee = new Employee(nextEmpNumber,
-        // Employee.EmploymentType.INTERN, "Colin");
-        employees.put(employeeNumber, employee);
-        employeeList.add(newEmployee);
-        return newEmployee;
+    public Employee addEmployee(Employee.EmploymentType type, String fullName) {
+        Employee employee = new Employee(nextEmpNumber, type, fullName);
+        employees.put(nextEmpNumber, employee);
+        employeeList.add(employee);
+        nextEmpNumber++;
+        return employee;
 
     }
 
-    // public void addMeetingRoom(String code, String name){
-    // // MeetingRoom
-    // }
+    /* */
+    // GET Employee
+    public static Employee getEmployee(int employeeNumber) {
+        return employees.get(employeeNumber);
+    }
 
-    // public String getFacility(String code) {
+    /* */
+    // GET Employeessssss
+    public static List<Employee> getEmployees() {
+        System.out.println("\n\n--Employee List--");
+        return new ArrayList<>(employeeList);
+    }
 
-    // }
+    /* */
+    // ADD Meeting Room
+    public MeetingRoom addMeetingRoom(String code, String name) {
+        MeetingRoom room = new MeetingRoom(code, name);
+        facilities.put(code, room);
+        facilityList.add(room);
+        return room;
+    }
 
-    // public String getFacilities() {
-    // List<Facility> fList = new ArrayList<Facility>();
-    // fList.add();
-    // fList.add();
-    // }
+    /* */
+    // GET Facility
+    public Facility getFacility(String code) {
+        return facilities.get(code);
+    }
 
-    // public void doBooking(){
+    /* */
+    // GET Facilities
+    public static List<Facility> getFacilities() {
+        System.out.println("\n\n--Facilities--");
+        return new ArrayList<>(facilityList);
+    }
+
+    /* */
+    // doBookings from BookingRegister
+    // public Booking doBooking(){
 
     // }
 }

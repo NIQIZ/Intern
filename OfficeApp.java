@@ -1,11 +1,10 @@
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class OfficeApp {
     public static void main(String[] args) {
         Office o = new Office("Shaw HQ", "1 Scotts Road, #13-00, Singapore 228208\n\n");
 
+        /* */
         // Information
         System.out.println("Name: " + o.getName());
         System.out.println("Address: " + o.getAddress());
@@ -14,34 +13,54 @@ public class OfficeApp {
         Employee.EmploymentType intern = Employee.EmploymentType.INTERN;
         Employee.EmploymentType permanent = Employee.EmploymentType.PERMANENT;
 
-        // Employee e = new Employee(2, permanent);
-        // System.out.println(e.getEmployeeNumber());
-        // e.getStatus(intern);
-        // e.getStatus(permanent);
+        /* */
+        // ADD employee
+        Employee new1 = o.addEmployee(permanent, "Employee 1");
+        Employee new2 = o.addEmployee(intern, "Employee 2");
+        Employee new3 = o.addEmployee(intern, "Employee 3");
+        Employee new4 = o.addEmployee(intern, "Employee 4");
+        Employee new5 = o.addEmployee(intern, "Employee 5");
 
-        // get employee
-        Map<Integer, Employee> employees = new HashMap<>();
+        // System.out.println(o.employees.toString()); // Used for checking Map
 
-        int nextEmpNumber = 1;
+        /* */
+        // // GET employee
+        Employee employee = o.getEmployee(3); // Specify which employee here
+        System.out.println(employee.toString());
 
-        Employee employee1 = new Employee(nextEmpNumber, intern, "Employee 1");
-        employees.put(employee1.getEmployeeNumber(), employee1);
-        nextEmpNumber++;
+        /* */
+        // GET employeesssss
+        List<Employee> employeeList = o.getEmployees();
 
-        Employee employee2 = new Employee(nextEmpNumber, permanent, "Employee 2");
-        employees.put(employee2.getEmployeeNumber(), employee2);
-        nextEmpNumber++;
+        for (Employee e : employeeList) {
+            System.out.println(e.getEmployeeNumber() + ": " + e.getFullName() + " " + e.getStatus());
+        }
 
-        Employee employee = o.getEmployee(2, employees);
-        System.out.println(employee.toString() + "\n\n");
+        /* */
+        // ADD meeting room
+        MeetingRoom room1 = o.addMeetingRoom("F01", "Foxy Room");
+        MeetingRoom room2 = o.addMeetingRoom("F02", "Empire Room");
+        MeetingRoom room3 = o.addMeetingRoom("F03", "Royal Room");
 
-        // get employeesssss
-        System.out.println("--Employee List--");
-        List<Employee> employeeList = o.getEmployees(employees);
-        System.out.println(employeeList);
+        // room1.print();
 
-        // add employee
-        Employee newEmployee = o.addEmployee(nextEmpNumber, permanent, "Employee 3");
-        employeeList.add(employee);
+        /* */
+        // // GET facility
+        Facility facility = o.getFacility("F02");
+        if (facility != null) {
+            System.out.println("\n\n");
+            facility.print();
+        }
+
+        /* */
+        // // GET facilities
+        List<Facility> facilityList = o.getFacilities();
+        for (Facility f : facilityList) {
+            f.print();
+        }
+
+        /* */
+        // // GET the bookings
+        // o.doBooking();
     }
 }
